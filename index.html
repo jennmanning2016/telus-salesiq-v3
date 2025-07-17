@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TELUS SalesIQ Prompt Library</title>
+  <link rel="icon" type="image/png" href="https://www.telus.com/etc/designs/tcom/telus/global/clientlib-site/resources/images/favicon.ico" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #4B0082, #66CC00);
+      margin: 0; padding: 0;
+    }
+    .header {
+      background: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+    }
+    .header img { height: 40px; }
+    .nav {
+      display: flex;
+      gap: 20px;
+    }
+    .nav button {
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .active { text-decoration: underline; color: #4B0082; }
+
+    .container { padding: 20px; max-width: 1000px; margin: auto; }
+
+    .category-title {
+      font-size: 20px;
+      margin-top: 40px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+      color: #4B0082;
+    }
+
+    .prompt-card {
+      background: white;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .tags span {
+      background: #eee;
+      border-radius: 4px;
+      padding: 3px 8px;
+      margin-right: 5px;
+      font-size: 12px;
+    }
+    .copy-btn {
+      float: right;
+      padding: 5px 10px;
+      background: #4B0082;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .suggest {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ffffff;
+      border: 2px solid #4B0082;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      color: #4B0082;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <a class="suggest" href="https://forms.gle/AbCdEf123456789" target="_blank">Suggest a Prompt</a>
+
+  <div class="header">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/Telus_Logo.svg/2560px-Telus_Logo.svg.png" alt="TELUS Logo"/>
+    <div class="nav">
+      <button class="tab-btn active" onclick="switchTab('General')">General</button>
+      <button class="tab-btn" onclick="switchTab('Agriculture')">Agriculture</button>
+      <button class="tab-btn" onclick="switchTab('Consumer')">Consumer Goods</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div id="General" class="tab-content">
+      <div class="category-title">Territory Planning</div>
+      <div class="prompt-card">
+        <strong>Territory Funnel Analysis & Strategy</strong>
+        <button class="copy-btn" onclick="copyText(this)">Copy</button>
+        <p><em>Territory planning and funnel optimization strategies</em></p>
+        <div class="tags"><span>territory-planning</span> <span>strategy</span></div>
+        <pre>My funnel is [Bloated/Anemic/Stagnant/Unqualified]... [truncated for demo]</pre>
+      </div>
+    </div>
+
+    <div id="Agriculture" class="tab-content" style="display:none">
+      <div class="category-title">Prospecting</div>
+      <div class="prompt-card">
+        <strong>Agricultural Producer Outreach</strong>
+        <button class="copy-btn" onclick="copyText(this)">Copy</button>
+        <p><em>Comprehensive outreach for large-scale agricultural producers</em></p>
+        <div class="tags"><span>agriculture</span> <span>producers</span></div>
+        <pre>Act as an expert TELUS sales professional specializing in Agriculture... [truncated]</pre>
+      </div>
+    </div>
+
+    <div id="Consumer" class="tab-content" style="display:none">
+      <div class="category-title">Prospecting</div>
+      <div class="prompt-card">
+        <strong>CPG Manufacturer Outreach</strong>
+        <button class="copy-btn" onclick="copyText(this)">Copy</button>
+        <p><em>Cold outreach framework for CPG manufacturers</em></p>
+        <div class="tags"><span>cpg</span> <span>outreach</span></div>
+        <pre>Act as an expert TELUS sales professional specializing in Consumer Goods... [truncated]</pre>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-content').forEach(e => e.style.display = 'none');
+      document.querySelectorAll('.tab-btn').forEach(e => e.classList.remove('active'));
+      document.getElementById(tab).style.display = 'block';
+      [...document.querySelectorAll('.tab-btn')].find(btn => btn.textContent.includes(tab)).classList.add('active');
+    }
+
+    function copyText(btn) {
+      const text = btn.parentElement.querySelector('pre').innerText;
+      navigator.clipboard.writeText(text);
+      btn.innerText = "Copied!";
+      setTimeout(() => btn.innerText = "Copy", 2000);
+    }
+  </script>
+
+</body>
+</html>
