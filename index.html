@@ -2,1032 +2,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>TELUS SalesIQ Prompt Library</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-        header {
-            background-color: #4B0082;
-            color: white;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-        }
-        header img {
-            height: 50px;
-            margin-right: 20px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .tabs {
-            display: flex;
-            gap: 10px;
-            padding: 10px;
-            background: #e9ecef;
-            flex-wrap: wrap;
-        }
-        .tab-button {
-            background: #fff;
-            border: 2px solid #4B0082;
-            color: #4B0082;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .tab-button.active {
-            background: #4B0082;
-            color: #fff;
-        }
-        .tab-content {
-            display: none;
-            padding: 20px;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        .prompt-section h2 {
-            margin-top: 30px;
-            color: #4B0082;
-        }
-        .prompt-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        .prompt-card h3 {
-            margin: 0 0 10px 0;
-            font-size: 18px;
-        }
-        .copy-button {
-            float: right;
-            background: #66CC00;
-            border: none;
-            color: white;
-            padding: 6px 12px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        .submit-link {
-            display: block;
-            text-align: center;
-            background: #4B0082;
-            color: white;
-            text-decoration: none;
-            margin: 30px auto;
-            padding: 12px 24px;
-            width: fit-content;
-            border-radius: 5px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TELUS SalesIQ Prompt Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background-color: #4B0082;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      color: white;
+    }
+    header img {
+      height: 50px;
+      margin-right: 15px;
+    }
+    header h1 {
+      font-size: 22px;
+      margin: 0;
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 15px;
+      background-color: #e5e5f7;
+    }
+    .tab-button {
+      background-color: white;
+      border: 2px solid #4B0082;
+      color: #4B0082;
+      padding: 8px 16px;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .tab-button.active {
+      background-color: #4B0082;
+      color: white;
+    }
+    .tab-content {
+      display: none;
+      padding: 20px;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    h2 {
+      color: #4B0082;
+      margin-top: 40px;
+    }
+    .prompt-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      padding: 15px;
+    }
+    .prompt-card h3 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #333;
+    }
+    .prompt-text {
+      white-space: pre-wrap;
+      margin-top: 10px;
+    }
+    .copy-button {
+      background-color: #66CC00;
+      border: none;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      float: right;
+    }
+    .submit-button {
+      display: block;
+      margin: 40px auto 20px auto;
+      padding: 12px 24px;
+      background-color: #4B0082;
+      color: white;
+      text-align: center;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-<header>
-    <img src="TAC logo.png" alt="TAC Logo">
+  <header>
+    <img src="TAC logo.png" alt="TAC Logo"/>
     <h1>TELUS SalesIQ Prompt Library</h1>
-</header>
-<div class="tabs">
-    
-    <button class="tab-button" onclick="showTab('Agriculture')">Agriculture</button>
-    
-    <button class="tab-button" onclick="showTab('Consumer Goods')">Consumer Goods</button>
-    
-    <button class="tab-button" onclick="showTab('General')">General</button>
-    
-</div>
+  </header>
+  <div class="tabs" id="tabs"></div>
+  <div id="content"></div>
 
+  <a href="https://docs.google.com/forms/d/1KFgz17OCTqzkVkXMDTNc102L0P7f-M4SPMx5qcep99c/viewform" target="_blank" class="submit-button">Suggest a Prompt</a>
 
-<div id="tab-Agriculture" class="tab-content">
-    
-    <div class="prompt-section">
-        <h2>Prospecting</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-    <div class="prompt-section">
-        <h2>Sustainability</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-    <div class="prompt-section">
-        <h2>Technology Adoption</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-</div>
+  <script>
+    const data = {
+      "General Sales": {
+        "Discovery & Prep": [
+          {
+            title: "Discovery Call Questions",
+            prompt: "Generate 10 questions I can ask a prospect to uncover <strong>pain points</strong>, <strong>budget</strong>, and <strong>decision process</strong>."
+          },
+          {
+            title: "Forecast Justification",
+            prompt: "Help me justify why <strong>[Opportunity Name]</strong> should remain forecasted to close this quarter. Include <strong>stage, signals, and blocker mitigation</strong>."
+          }
+        ]
+      },
+      "Agriculture": {
+        "Objection Handling": [
+          {
+            title: "Competitor Comparison",
+            prompt: "Compare our ag tools with <strong>[Trimble]</strong> and <strong>[John Deere]</strong>."
+          }
+        ]
+      },
+      "Consumer Goods": {
+        "Messaging & Follow-up": [
+          {
+            title: "Post-Demo Follow-up",
+            prompt: "Write a follow-up email to <strong>[Prospect Name]</strong> after a demo. Include <strong>value summary</strong> and <strong>next steps</strong>."
+          }
+        ]
+      }
+    };
 
-<div id="tab-Consumer Goods" class="tab-content">
-    
-    <div class="prompt-section">
-        <h2>Account Planning</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-    <div class="prompt-section">
-        <h2>Channel Partners</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-    <div class="prompt-section">
-        <h2>Competitive Strategy</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-    <div class="prompt-section">
-        <h2>Deal Planning</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-    <div class="prompt-section">
-        <h2>Prospecting</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-    <div class="prompt-section">
-        <h2>Technology Adoption</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-</div>
+    const tabsEl = document.getElementById("tabs");
+    const contentEl = document.getElementById("content");
 
-<div id="tab-General" class="tab-content">
-    
-    <div class="prompt-section">
-        <h2>Account Planning</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-    <div class="prompt-section">
-        <h2>Deal Planning</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-    <div class="prompt-section">
-        <h2>Meeting Prep</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-    <div class="prompt-section">
-        <h2>Objection Handling</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-    <div class="prompt-section">
-        <h2>Prospecting</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-    <div class="prompt-section">
-        <h2>Territory Planning</h2>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-        <div class="prompt-card">
-            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-            <h3></h3>
-            <div class="prompt-text"></div>
-        </div>
-        
-    </div>
-    
-</div>
+    const units = Object.keys(data);
 
-
-<a href="https://docs.google.com/forms/d/1KFgz17OCTqzkVkXMDTNc102L0P7f-M4SPMx5qcep99c/viewform" class="submit-link" target="_blank">
-    Suggest a Prompt
-</a>
-
-<script>
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    function showTab(bu) {
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        tabContents.forEach(tab => tab.classList.remove('active'));
-        document.querySelector(`[onclick="showTab('${bu}')"]`).classList.add('active');
-        document.getElementById('tab-' + bu).classList.add('active');
+    function showTab(unit) {
+      document.querySelectorAll(".tab-button").forEach(btn => btn.classList.remove("active"));
+      document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
+      document.getElementById("tab-" + unit).classList.add("active");
+      document.getElementById("btn-" + unit).classList.add("active");
     }
 
-    showTab("General Sales");
+    units.forEach(unit => {
+      const btn = document.createElement("button");
+      btn.innerText = unit;
+      btn.id = "btn-" + unit;
+      btn.className = "tab-button";
+      btn.onclick = () => showTab(unit);
+      tabsEl.appendChild(btn);
 
-    function copyToClipboard(button) {
-        const text = button.parentElement.querySelector(".prompt-text").innerText;
-        navigator.clipboard.writeText(text).then(() => {
-            button.innerText = "Copied!";
-            setTimeout(() => button.innerText = "Copy", 2000);
+      const div = document.createElement("div");
+      div.className = "tab-content";
+      div.id = "tab-" + unit;
+
+      const cats = Object.keys(data[unit]);
+      cats.forEach(cat => {
+        const catHeader = document.createElement("h2");
+        catHeader.innerText = cat;
+        div.appendChild(catHeader);
+
+        data[unit][cat].forEach(p => {
+          const card = document.createElement("div");
+          card.className = "prompt-card";
+          card.innerHTML = `
+            <button class="copy-button" onclick="copyText(this)">Copy</button>
+            <h3>${p.title}</h3>
+            <div class="prompt-text">${p.prompt}</div>
+          `;
+          div.appendChild(card);
         });
+      });
+
+      contentEl.appendChild(div);
+    });
+
+    function copyText(button) {
+      const text = button.parentElement.querySelector(".prompt-text").innerText;
+      navigator.clipboard.writeText(text);
+      button.innerText = "Copied!";
+      setTimeout(() => button.innerText = "Copy", 2000);
     }
-</script>
+
+    showTab(units[0]);
+  </script>
 </body>
 </html>
