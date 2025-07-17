@@ -38,7 +38,7 @@
       });
     }
     document.addEventListener("DOMContentLoaded", () => {
-      showTab("General Sales");
+      showTab("General");
     });
   </script>
 </head>
@@ -51,47 +51,190 @@
   <a href="https://forms.gle/exampleTELUSform" class="form-button" target="_blank">Suggest a Prompt</a>
 </header>
 <div class="tabs">
-  <div class="tab" id="tab-General Sales" onclick="showTab('General Sales')">General Sales</div>
   <div class="tab" id="tab-Agriculture" onclick="showTab('Agriculture')">Agriculture</div>
   <div class="tab" id="tab-Consumer Goods" onclick="showTab('Consumer Goods')">Consumer Goods</div>
+  <div class="tab" id="tab-General" onclick="showTab('General')">General</div>
 </div>
-  <div class="content-section" id="General Sales">
-    <div class="category">Forecasting</div>
-    <div class="prompt">
-      <div class="title">Forecast Justification</div>
-      <div class="tags">Tags: forecasting, pipeline</div>
-      <div class="desc">Justify why an opportunity is forecasted to close this quarter.</div>
-      <pre id="GeFo0">Help me write a short note justifying why an opportunity is still forecasted to close this quarter...</pre>
-      <button class="copy" onclick="copyText('GeFo0')">Copy Prompt</button>
-    </div>
-    <div class="category">Objection Handling</div>
-    <div class="prompt">
-      <div class="title">Pricing Objection Handling</div>
-      <div class="tags">Tags: objections, pricing</div>
-      <div class="desc">Strategies for managing pricing objections.</div>
-      <pre id="GeOb0">List ways to address objections around pricing, timing, or switching from a competitor...</pre>
-      <button class="copy" onclick="copyText('GeOb0')">Copy Prompt</button>
-    </div>
-  </div>
   <div class="content-section" id="Agriculture">
     <div class="category">Prospecting</div>
     <div class="prompt">
-      <div class="title">Outreach to Agribusiness</div>
-      <div class="tags">Tags: agriculture, outreach</div>
-      <div class="desc">Framework to reach large-scale ag producers.</div>
-      <pre id="AgPr0">Generate a message to large-scale ag producers focused on yield optimization and traceability...</pre>
+      <div class="title">Agricultural Producer Outreach</div>
+      <div class="tags">Tags: agriculture, producers, outreach, precision-farming, analytics, cooperatives</div>
+      <div class="desc">Comprehensive outreach framework for large-scale agricultural producers and agribusiness operations</div>
+      <pre id="AgPr0">Act as an expert TELUS sales professional specializing in Agriculture technology solutions. Help me with outreach to large-scale agricultural producers and agribusiness operations.\n\nContext:\n- Business Unit: TELUS Agriculture\n- Target: Large-scale crop/livestock producers, agribusiness conglomerates, agricultural cooperatives\n- Focus: Data-driven insights, precision agriculture, supply chain optimization\n\nProvide:\n1. Outreach framework for agricultural producers\n2. Key pain points in modern farming operations\n3. Questions about current farming challenges\n4. Value proposition for agricultural operations\n5. Success metrics for producer engagement\n\nFocus areas:\n- Precision agriculture and data analytics\n- Supply chain traceability\n- Sustainability and regulatory compliance\n- Yield optimization and cost reduction\n\nCustomize for:\n- Operation type: [Crop/Livestock/Mixed]\n- Geographic scope: [Regional/National/International]\n- Technology adoption: [Traditional/Emerging/Advanced]</pre>
       <button class="copy" onclick="copyText('AgPr0')">Copy Prompt</button>
+    </div>
+    <div class="prompt">
+      <div class="title">Food Safety & Regulatory Compliance Outreach</div>
+      <div class="tags">Tags: agriculture, food-safety, compliance, traceability, processors, audit</div>
+      <div class="desc">Comprehensive approach for food safety and regulatory compliance challenges</div>
+      <pre id="AgPr1">Act as an expert TELUS sales professional specializing in Agriculture technology solutions with a focus on food safety and regulatory compliance.\n\nContext:\n- Business Unit: TELUS Agriculture\n- Target: Food producers, processors, distributors facing regulatory compliance challenges\n- Focus: Food safety management, traceability, regulatory reporting, audit preparation\n\nProvide:\n1. Outreach framework for compliance-focused agricultural businesses\n2. Key pain points in food safety management and regulatory reporting\n3. Questions about current compliance processes and challenges\n4. Value proposition for automated compliance and traceability solutions\n5. Success metrics for food safety and compliance partnerships\n\nFocus areas:\n- End-to-end traceability from farm to consumer\n- Automated compliance reporting and documentation\n- Real-time monitoring and alert systems\n- Audit preparation and regulatory readiness\n- Supply chain transparency and verification\n\nCustomize for:\n- Regulatory framework: [FDA/USDA/CFIA/EU regulations]\n- Company type: [Producer/Processor/Distributor/Retailer]\n- Compliance maturity: [Manual processes/Partial automation/Advanced systems]\n- Geographic scope: [Local/Regional/National/International]</pre>
+      <button class="copy" onclick="copyText('AgPr1')">Copy Prompt</button>
+    </div>
+    <div class="category">Sustainability</div>
+    <div class="prompt">
+      <div class="title">Sustainability & ESG Outreach</div>
+      <div class="tags">Tags: agriculture, sustainability, esg, reporting, compliance, carbon-footprint</div>
+      <div class="desc">Sustainability and ESG-focused outreach for agricultural value chain companies</div>
+      <pre id="AgSu0">Act as an expert TELUS sales professional specializing in Agriculture technology solutions with a focus on sustainability and ESG compliance.\n\nContext:\n- Business Unit: TELUS Agriculture\n- Target: Companies across agricultural value chain with strong sustainability commitments\n- Focus: ESG reporting, carbon footprint reduction, sustainable sourcing\n\nProvide:\n1. Sustainability-focused outreach strategies\n2. Value propositions for ESG compliance\n3. Questions about sustainability goals and challenges\n4. Best practices for sustainability relationships\n5. Success metrics for sustainability partnerships\n\nFocus areas:\n- Carbon footprint measurement and reduction\n- Regenerative agriculture practices\n- Sustainable sourcing and transparency\n- ESG reporting and compliance\n- Water usage and waste reduction\n\nCustomize for:\n- Sustainability focus: [Carbon/Water/Biodiversity/Social]\n- Regulatory requirements: [EU taxonomy/SEC reporting/Voluntary]\n- Stakeholder pressure: [Investors/Consumers/Regulators]</pre>
+      <button class="copy" onclick="copyText('AgSu0')">Copy Prompt</button>
+    </div>
+    <div class="prompt">
+      <div class="title">Sustainability Reporting & Environmental Impact Management</div>
+      <div class="tags">Tags: agriculture, sustainability, environmental, reporting, esg, carbon-tracking, water-monitoring</div>
+      <div class="desc">Environmental impact measurement and automated sustainability reporting solutions</div>
+      <pre id="AgSu1">Act as an expert TELUS sales professional specializing in Agriculture technology solutions with a focus on sustainability reporting and environmental impact management.\n\nContext:\n- Business Unit: TELUS Agriculture\n- Target: Agricultural companies with sustainability commitments, ESG reporting requirements\n- Focus: Environmental impact measurement, carbon footprint tracking, sustainability reporting automation\n\nProvide:\n1. Sustainability-focused outreach strategies for agricultural operations\n2. Key challenges in environmental impact measurement and reporting\n3. Questions about current sustainability tracking and reporting processes\n4. Value proposition for automated sustainability monitoring and reporting\n5. Success metrics for environmental impact management partnerships\n\nFocus areas:\n- Carbon footprint measurement and reduction strategies\n- Water usage monitoring and conservation tracking\n- Soil health and biodiversity impact assessment\n- Automated ESG and sustainability reporting\n- Supply chain environmental impact visibility\n- Renewable energy integration and tracking\n\nCustomize for:\n- Sustainability goals: [Carbon neutral/Net zero/Regenerative agriculture]\n- Reporting requirements: [SEC/EU Taxonomy/GRI/SASB/Voluntary commitments]\n- Operation type: [Crop production/Livestock/Mixed farming/Processing]\n- Stakeholder pressure: [Investors/Customers/Regulators/Certification bodies]</pre>
+      <button class="copy" onclick="copyText('AgSu1')">Copy Prompt</button>
+    </div>
+    <div class="category">Technology Adoption</div>
+    <div class="prompt">
+      <div class="title">Smart Farming Technology & IoT Integration</div>
+      <div class="tags">Tags: agriculture, iot, smart-farming, sensors, automation, connectivity, analytics</div>
+      <div class="desc">Smart farming technology adoption and IoT integration for modern agricultural operations</div>
+      <pre id="AgTe0">Act as an expert TELUS sales professional specializing in Agriculture technology solutions with a focus on smart farming equipment and IoT integration.\n\nContext:\n- Business Unit: TELUS Agriculture\n- Target: Farmers and agribusiness operations looking to modernize with smart technology\n- Focus: IoT sensors, connected equipment, data analytics, precision agriculture automation\n\nProvide:\n1. Technology adoption framework for smart farming initiatives\n2. Key challenges in equipment connectivity and data integration\n3. Questions about current technology infrastructure and modernization goals\n4. Value proposition for connected farming and IoT solutions\n5. Success metrics for smart farming technology partnerships\n\nFocus areas:\n- IoT sensor deployment for soil, weather, and crop monitoring\n- Connected equipment integration and fleet management\n- Real-time data analytics and decision support systems\n- Automated irrigation and precision application systems\n- Predictive maintenance for agricultural equipment\n- Farm management software integration and connectivity\n\nCustomize for:\n- Farm size: [Small family farm/Mid-size operation/Large commercial/Corporate agriculture]\n- Technology readiness: [Traditional/Early adopter/Tech-forward/Fully connected]\n- Equipment focus: [Tractors/Irrigation/Harvesting/Livestock/Greenhouse systems]\n- Connectivity needs: [Basic monitoring/Full automation/Enterprise integration]</pre>
+      <button class="copy" onclick="copyText('AgTe0')">Copy Prompt</button>
     </div>
   </div>
   <div class="content-section" id="Consumer Goods">
+    <div class="category">Prospecting</div>
+    <div class="prompt">
+      <div class="title">CPG Manufacturer Outreach</div>
+      <div class="tags">Tags: cpg, manufacturers, outreach, trade-promotion, distribution, beverage, protein</div>
+      <div class="desc">Cold outreach framework for Consumer Packaged Goods manufacturers</div>
+      <pre id="CoPr0">Act as an expert TELUS sales professional specializing in Consumer Goods technology solutions. Help me with cold outreach to Consumer Packaged Goods (CPG) manufacturers.\n\nContext:\n- Business Unit: TELUS Consumer Goods\n- Target: CPG Manufacturers (Beverage, Protein, Health & Hygiene, Baked Goods)\n- Focus: Trade promotion management and distribution optimization\n\nProvide:\n1. Outreach framework for CPG manufacturers\n2. Key pain points in retail/food service distribution\n3. Questions about their trade promotion challenges\n4. Value proposition for manufacturing operations\n5. Success metrics for manufacturer engagement\n\nFocus areas:\n- Trade promotion efficiency\n- Multi-channel distribution (retail & food service)\n- Supply chain optimization\n- Integration with existing ERP/trade systems\n\nCustomize for:\n- Manufacturer category: [Beverage/Protein/Health & Hygiene/Baked Goods]\n- Company size: [Regional/National/Multinational]\n- Current trade system: [Manual/Legacy/Advanced]</pre>
+      <button class="copy" onclick="copyText('CoPr0')">Copy Prompt</button>
+    </div>
     <div class="category">Channel Partners</div>
     <div class="prompt">
-      <div class="title">Broker Collaboration</div>
-      <div class="tags">Tags: consumer goods, brokers</div>
-      <div class="desc">Partnering with brokers and agencies in CPG.</div>
-      <pre id="CoCh0">Suggest 5 ways we can co-sell with CPG brokers who represent major food brands...</pre>
+      <div class="title">Sales Agency Partnerships</div>
+      <div class="tags">Tags: cpg, agencies, partnerships, channel-strategy, brokers, co-selling</div>
+      <div class="desc">Partnership development strategies for sales agencies and brokers in CPG space</div>
+      <pre id="CoCh0">Act as an expert TELUS sales professional specializing in Consumer Goods technology solutions. Help me develop partnerships with sales agencies and brokers who represent CPG manufacturers.\n\nContext:\n- Business Unit: TELUS Consumer Goods\n- Target: Sales Agencies and Brokers representing CPG manufacturers\n- Objective: Partner with agencies to reach their manufacturer clients\n\nProvide:\n1. Agency partnership strategies\n2. Value propositions for agency relationships\n3. Questions about their manufacturer client base\n4. Joint sales approaches and co-selling\n5. Success metrics for agency partnerships\n\nFocus areas:\n- How our TELUS solutions benefit their manufacturer clients\n- Commission and partnership structures\n- Training and support for agency teams\n- Lead sharing and opportunity management\n\nCustomize for:\n- Agency specialization: [Food & Beverage/Health & Beauty/General CPG]\n- Geographic territory: [Regional/National]\n- Client portfolio: [Manufacturer types they represent]</pre>
       <button class="copy" onclick="copyText('CoCh0')">Copy Prompt</button>
     </div>
+    <div class="prompt">
+      <div class="title">Private Label & Co-Manufacturing Partnerships</div>
+      <div class="tags">Tags: cpg, private-label, co-manufacturing, partnerships, contract-manufacturing, retailer</div>
+      <div class="desc">Private label and co-manufacturing partnership strategies for CPG operations</div>
+      <pre id="CoCh1">Act as an expert TELUS sales professional specializing in Consumer Goods technology solutions with a focus on private label and co-manufacturing partnerships.\n\nContext:\n- Business Unit: TELUS Consumer Goods\n- Target: CPG manufacturers involved in private label production or seeking co-manufacturing partnerships\n- Focus: Private label operations, co-packing relationships, contract manufacturing\n\nProvide:\n1. Private label partnership framework\n2. Key challenges in co-manufacturing and private label operations\n3. Questions about current manufacturing partnerships and capabilities\n4. Value proposition for integrated manufacturing and supply chain solutions\n5. Success metrics for private label and co-manufacturing partnerships\n\nFocus areas:\n- Private label product development and innovation\n- Co-manufacturing partner selection and management\n- Quality control and compliance across manufacturing partners\n- Capacity planning and production scheduling\n- Cost optimization and margin management\n- Retailer private label program support\n\nCustomize for:\n- Manufacturing focus: [Private label producer/Co-packer/Contract manufacturer]\n- Product categories: [Food & Beverage/Personal care/Household/Pet products]\n- Partnership type: [Retailer private label/Brand co-packing/White label]\n- Scale: [Regional co-packer/National manufacturer/International operations]</pre>
+      <button class="copy" onclick="copyText('CoCh1')">Copy Prompt</button>
+    </div>
+    <div class="category">Technology Adoption</div>
+    <div class="prompt">
+      <div class="title">E-commerce & Digital Transformation for CPG</div>
+      <div class="tags">Tags: cpg, e-commerce, digital-transformation, d2c, omnichannel, marketplace</div>
+      <div class="desc">E-commerce and digital transformation strategies for CPG manufacturers</div>
+      <pre id="CoTe0">Act as an expert TELUS sales professional specializing in Consumer Goods technology solutions with a focus on e-commerce and digital transformation for CPG manufacturers.\n\nContext:\n- Business Unit: TELUS Consumer Goods\n- Target: CPG manufacturers expanding into e-commerce or enhancing digital capabilities\n- Focus: Direct-to-consumer platforms, digital marketing, omnichannel integration\n\nProvide:\n1. Digital transformation framework for CPG manufacturers\n2. Key challenges in e-commerce adoption and omnichannel strategy\n3. Questions about current digital capabilities and e-commerce goals\n4. Value proposition for integrated digital commerce solutions\n5. Success metrics for digital transformation partnerships\n\nFocus areas:\n- Direct-to-consumer (D2C) platform development\n- E-commerce marketplace optimization (Amazon, Walmart, etc.)\n- Digital marketing and customer data analytics\n- Omnichannel inventory and fulfillment\n- Social commerce and influencer marketing integration\n- Subscription and recurring revenue models\n\nCustomize for:\n- Digital maturity: [Traditional/Emerging/Advanced]\n- E-commerce focus: [D2C/Marketplace/B2B/Omnichannel]\n- Product category: [Food & Beverage/Health & Beauty/Household/Pet]\n- Geographic scope: [Regional/National/International]</pre>
+      <button class="copy" onclick="copyText('CoTe0')">Copy Prompt</button>
+    </div>
+    <div class="category">Deal Planning</div>
+    <div class="prompt">
+      <div class="title">Trade Promotion Optimization & Analytics</div>
+      <div class="tags">Tags: cpg, trade-promotion, analytics, roi, optimization, retailer-collaboration</div>
+      <div class="desc">Trade promotion optimization and analytics for improved CPG manufacturer ROI</div>
+      <pre id="CoDe0">Act as an expert TELUS sales professional specializing in Consumer Goods technology solutions with a focus on trade promotion optimization and analytics.\n\nContext:\n- Business Unit: TELUS Consumer Goods\n- Target: CPG manufacturers struggling with trade promotion effectiveness and ROI measurement\n- Focus: Trade spend optimization, promotion analytics, retailer collaboration\n\nProvide:\n1. Trade promotion optimization framework\n2. Key pain points in trade spend management and ROI measurement\n3. Questions about current promotion planning and execution processes\n4. Value proposition for automated trade promotion management\n5. Success metrics for trade promotion optimization\n\nFocus areas:\n- Trade promotion planning and forecasting\n- Real-time promotion performance tracking\n- Retailer collaboration and data sharing\n- Promotion ROI analysis and optimization\n- Deduction management and settlement\n- Category and competitive promotion intelligence\n\nCustomize for:\n- Trade complexity: [Simple/Multi-tier/Complex promotional structures]\n- Retailer relationships: [Key accounts/Regional chains/National retailers]\n- Promotion types: [Price/Display/Feature/Combo promotions]\n- Analytics maturity: [Basic reporting/Advanced analytics/Predictive modeling]</pre>
+      <button class="copy" onclick="copyText('CoDe0')">Copy Prompt</button>
+    </div>
+    <div class="category">Account Planning</div>
+    <div class="prompt">
+      <div class="title">Supply Chain Visibility & Demand Planning</div>
+      <div class="tags">Tags: cpg, supply-chain, demand-planning, inventory, visibility, forecasting</div>
+      <div class="desc">Supply chain visibility and demand planning solutions for CPG manufacturers</div>
+      <pre id="CoAc0">Act as an expert TELUS sales professional specializing in Consumer Goods technology solutions with a focus on supply chain visibility and demand planning.\n\nContext:\n- Business Unit: TELUS Consumer Goods\n- Target: CPG manufacturers facing supply chain disruptions and demand forecasting challenges\n- Focus: End-to-end supply chain visibility, demand sensing, inventory optimization\n\nProvide:\n1. Supply chain visibility framework for CPG operations\n2. Key challenges in demand planning and inventory management\n3. Questions about current supply chain processes and pain points\n4. Value proposition for integrated supply chain solutions\n5. Success metrics for supply chain optimization partnerships\n\nFocus areas:\n- Real-time supply chain visibility and tracking\n- Demand sensing and forecasting accuracy\n- Inventory optimization across multiple channels\n- Supplier collaboration and risk management\n- Logistics and distribution optimization\n- Sustainability and circular supply chain initiatives\n\nCustomize for:\n- Supply chain complexity: [Simple/Multi-tier/Global operations]\n- Product characteristics: [Perishable/Shelf-stable/Seasonal/Year-round]\n- Distribution channels: [Retail/Food service/E-commerce/Direct]\n- Geographic scope: [Regional/National/International/Global]</pre>
+      <button class="copy" onclick="copyText('CoAc0')">Copy Prompt</button>
+    </div>
+    <div class="category">Competitive Strategy</div>
+    <div class="prompt">
+      <div class="title">Category Management & Shopper Insights</div>
+      <div class="tags">Tags: cpg, category-management, shopper-insights, retail-partnerships, planogram, analytics</div>
+      <div class="desc">Category management and shopper insights for enhanced retailer partnerships</div>
+      <pre id="CoCo0">Act as an expert TELUS sales professional specializing in Consumer Goods technology solutions with a focus on category management and shopper insights.\n\nContext:\n- Business Unit: TELUS Consumer Goods\n- Target: CPG manufacturers working with retailers on category management and shopper marketing\n- Focus: Category analytics, shopper behavior, planogram optimization, joint business planning\n\nProvide:\n1. Category management collaboration framework\n2. Key challenges in shopper insights and category optimization\n3. Questions about current category management processes and retailer relationships\n4. Value proposition for advanced category analytics and shopper intelligence\n5. Success metrics for category management partnerships\n\nFocus areas:\n- Category performance analysis and benchmarking\n- Shopper journey mapping and behavior analytics\n- Planogram optimization and space management\n- Joint business planning with retail partners\n- Promotional effectiveness and category lift analysis\n- Competitive intelligence and market share tracking\n\nCustomize for:\n- Category role: [Category captain/Key supplier/Emerging brand]\n- Retailer type: [Grocery/Mass/Club/Drug/Convenience]\n- Analytics sophistication: [Basic reporting/Advanced analytics/AI-driven insights]\n- Geographic focus: [Local/Regional/National/International]</pre>
+      <button class="copy" onclick="copyText('CoCo0')">Copy Prompt</button>
+    </div>
   </div>
-</body>
-</html>
+  <div class="content-section" id="General">
+    <div class="category">Territory Planning</div>
+    <div class="prompt">
+      <div class="title">Territory Funnel Analysis & Strategy</div>
+      <div class="tags">Tags: general, territory-planning, funnel-analysis, strategy, kpis, optimization</div>
+      <div class="desc">Territory planning and funnel optimization strategies for sales professionals</div>
+      <pre id="GeTe0">My funnel is [Bloated/Anemic/Stagnant/Unqualified]. Help me identify five Funnel Building or progression strategies to use in my Territory Plan.\n\nProvide the answers in a tabular view with:\n- Column 1: Funnel Build title\n- Column 2: Details associated with the strategy\n- Column 3: Typical KPIs associated with the idea\n\nFocus on actionable strategies that can be implemented within the next 90 days. Include both short-term fixes and long-term funnel health improvements.\n\nAdditional context:\n- Territory size: [Add details]\n- Current funnel state: [Describe specific issues]\n- Target market: [Consumer Goods/Agriculture/Other]\n- Resources available: [Team size, budget, tools]</pre>
+      <button class="copy" onclick="copyText('GeTe0')">Copy Prompt</button>
+    </div>
+    <div class="prompt">
+      <div class="title">Sales Velocity Optimization & Time Management</div>
+      <div class="tags">Tags: general, sales-velocity, time-management, prioritization, optimization, efficiency</div>
+      <div class="desc">Sales velocity optimization and time management for faster deal closure</div>
+      <pre id="GeTe1">Help me optimize my sales activities and time allocation to maximize deal velocity and close more opportunities faster.\n\nContext:\n- Challenge: Too many activities, not enough focus on high-impact opportunities\n- Objective: Prioritize activities that accelerate deal closure\n- Focus: Time allocation, activity prioritization, and process optimization\n\nProvide:\n1. Sales activity prioritization matrix\n2. Time blocking and calendar optimization\n3. Deal velocity metrics and tracking\n4. High-impact activity identification\n5. Process bottleneck elimination strategies\n\nSales velocity factors:\n- Number of opportunities in pipeline\n- Average deal size and value\n- Win rate and conversion metrics\n- Sales cycle length and acceleration\n- Activity efficiency and effectiveness\n- Follow-up timing and persistence\n\nCustomize for:\n- Current pipeline: [Size and stage distribution]\n- Time constraints: [Available selling time]\n- Activity mix: [Prospecting/Qualifying/Presenting/Closing]\n- Performance gaps: [Areas needing improvement]</pre>
+      <button class="copy" onclick="copyText('GeTe1')">Copy Prompt</button>
+    </div>
+    <div class="category">Account Planning</div>
+    <div class="prompt">
+      <div class="title">Industry Trends & Market Analysis</div>
+      <div class="tags">Tags: general, account-planning, market-analysis, trends, research, competitive</div>
+      <div class="desc">Industry and market trend analysis for account planning and client conversations</div>
+      <pre id="GeAc0">For [Company] summarize the key industry or market trends that will impact their business for 2025 and 2026.\n\nClassify these trends as either:\n- Demographic\n- Regulatory\n- Social\n- Technology\n- Business process change\n\nPresent the information in a format that can be used in an Account Plan. Include:\n1. Trend description and impact timeline\n2. Potential business implications (positive/negative)\n3. How our TELUS solutions can help address these trends\n4. Recommended discussion points for client conversations\n\nAdditional context:\n- Company industry: [Specify sector]\n- Company size: [Revenue/employees]\n- Geographic focus: [Regional/National/Global]\n- Current challenges: [Known pain points]</pre>
+      <button class="copy" onclick="copyText('GeAc0')">Copy Prompt</button>
+    </div>
+    <div class="category">Deal Planning</div>
+    <div class="prompt">
+      <div class="title">Company Analysis for Deal Strategy</div>
+      <div class="tags">Tags: general, deal-planning, company-analysis, competitive, strategy, assessment</div>
+      <div class="desc">Company analysis and strategic assessment for deal planning and sales strategy</div>
+      <pre id="GeDe0">Describe [Company] major lines of business, their core customers and industries, market conditions and competitive threats.\n\nOutline their main business goals for 2025 and 2026.\n\nPresent the information in a bullet list format that will be used in a Deal Plan associated with [Product].\n\nStructure the analysis as follows:\n• Business Overview\n  - Major lines of business\n  - Core customer segments\n  - Primary industries served\n\n• Market Position\n  - Current market conditions\n  - Competitive landscape\n  - Key competitive threats\n\n• Strategic Goals 2025-2026\n  - Growth objectives\n  - Operational priorities\n  - Technology initiatives\n\n• Deal Implications\n  - How our TELUS solution aligns with their goals\n  - Potential objections and concerns\n  - Value proposition alignment\n\nAdditional context:\n- Deal size: [Expected value]\n- Decision timeline: [Urgency factors]\n- Key stakeholders: [Decision makers]\n- Competitive situation: [Other vendors]</pre>
+      <button class="copy" onclick="copyText('GeDe0')">Copy Prompt</button>
+    </div>
+    <div class="prompt">
+      <div class="title">Value-Based Selling & ROI Justification</div>
+      <div class="tags">Tags: general, value-selling, roi, business-case, justification, executive-selling</div>
+      <div class="desc">Value-based selling and ROI justification to accelerate purchase decisions</div>
+      <pre id="GeDe1">Help me build compelling value propositions and ROI justifications that resonate with decision makers and accelerate purchase decisions.\n\nContext:\n- Challenge: Prospects struggle to justify investment and timeline\n- Objective: Create urgency through quantified business value\n- Focus: Financial impact, risk mitigation, and competitive advantage\n\nProvide:\n1. Value discovery questions to uncover business impact\n2. ROI calculation framework and templates\n3. Business case development structure\n4. Risk and cost of inaction messaging\n5. Executive-level value presentation format\n\nValue areas to quantify:\n- Cost savings and efficiency gains\n- Revenue growth and market expansion\n- Risk mitigation and compliance benefits\n- Productivity improvements and time savings\n- Competitive advantages and market positioning\n- Strategic alignment and future-proofing\n\nCustomize for:\n- Buyer persona: [CFO/CTO/COO/Business Unit Leader]\n- Industry metrics: [Key performance indicators]\n- Solution type: [Technology/Service/Platform]\n- Investment level: [Small/Medium/Large investment]</pre>
+      <button class="copy" onclick="copyText('GeDe1')">Copy Prompt</button>
+    </div>
+    <div class="category">Meeting Prep</div>
+    <div class="prompt">
+      <div class="title">Client Meeting Preparation</div>
+      <div class="tags">Tags: general, meeting-prep, client-interaction, preparation, research, discovery</div>
+      <div class="desc">Comprehensive meeting preparation framework for client interactions and sales meetings</div>
+      <pre id="GeMe0">Help me prepare for a TELUS meeting with [Company] on [Date].\n\nMeeting type: [Discovery/Demo/Proposal/Negotiation/Check-in]\n\nProvide:\n1. Pre-meeting research checklist\n2. Key questions to ask based on meeting type\n3. Talking points and value propositions\n4. Potential objections and responses\n5. Follow-up action planning\n\nResearch areas to cover:\n- Recent company news and developments\n- Industry trends affecting their business\n- Key stakeholders and their priorities\n- Previous TELUS interactions and relationship history\n\nCustomize for:\n- Meeting participants: [List attendees and roles]\n- Meeting objectives: [Desired outcomes]\n- Company background: [Industry, size, challenges]\n- Our solution relevance: [How TELUS can help]</pre>
+      <button class="copy" onclick="copyText('GeMe0')">Copy Prompt</button>
+    </div>
+    <div class="prompt">
+      <div class="title">Discovery & Needs Assessment Mastery</div>
+      <div class="tags">Tags: general, discovery, needs-assessment, questioning, pain-identification, buyer-psychology</div>
+      <div class="desc">Discovery and needs assessment mastery for more effective sales conversations</div>
+      <pre id="GeMe1">Help me conduct more effective discovery calls that uncover deeper needs and accelerate the buying process.\n\nContext:\n- Challenge: Surface-level discovery leading to longer sales cycles\n- Objective: Uncover compelling business needs and create urgency\n- Focus: Strategic questioning, pain identification, and solution alignment\n\nProvide:\n1. Discovery question framework (current state, desired state, consequences)\n2. Pain point identification and quantification techniques\n3. Stakeholder mapping and influence assessment\n4. Business impact exploration and urgency creation\n5. Next-step commitment and advancement strategies\n\nDiscovery areas to explore:\n- Current challenges and pain points\n- Business objectives and success metrics\n- Decision-making process and timeline\n- Budget and resource allocation\n- Technical requirements and constraints\n- Competitive evaluation and alternatives\n\nCustomize for:\n- Buyer persona: [Technical/Business/Executive]\n- Solution complexity: [Simple/Moderate/Complex]\n- Industry context: [Specific industry challenges]\n- Meeting format: [Phone/Video/In-person]</pre>
+      <button class="copy" onclick="copyText('GeMe1')">Copy Prompt</button>
+    </div>
+    <div class="category">Prospecting</div>
+    <div class="prompt">
+      <div class="title">Lead Qualification & Scoring Framework</div>
+      <div class="tags">Tags: general, qualification, lead-scoring, pipeline, sales-velocity, bant</div>
+      <div class="desc">Lead qualification framework to improve pipeline quality and sales velocity</div>
+      <pre id="GePr0">Help me create a comprehensive lead qualification framework to improve my pipeline quality and sales velocity.\n\nContext:\n- Objective: Qualify leads faster and focus on highest-probability opportunities\n- Challenge: Too many unqualified leads slowing down sales cycle\n- Focus: BANT, MEDDIC, or custom qualification criteria\n\nProvide:\n1. Lead scoring criteria and qualification questions\n2. Red flags and disqualification indicators\n3. Qualification conversation framework\n4. Next-step recommendations based on qualification level\n5. Pipeline velocity metrics to track\n\nQualification areas to assess:\n- Budget authority and procurement process\n- Need urgency and business impact\n- Decision-making process and timeline\n- Technical requirements and fit\n- Competitive landscape and alternatives\n- Implementation timeline and resources\n\nCustomize for:\n- Industry: [Agriculture/Consumer Goods/Technology/Other]\n- Deal size: [SMB/Mid-market/Enterprise]\n- Sales cycle: [Short/Medium/Long]\n- Current qualification method: [Basic/BANT/MEDDIC/Custom]</pre>
+      <button class="copy" onclick="copyText('GePr0')">Copy Prompt</button>
+    </div>
+    <div class="prompt">
+      <div class="title">Social Selling & Digital Prospecting</div>
+      <div class="tags">Tags: general, social-selling, digital-prospecting, linkedin, pipeline-building, thought-leadership</div>
+      <div class="desc">Social selling and digital prospecting to build pipeline faster</div>
+      <pre id="GePr1">Help me leverage social selling and digital channels to build pipeline faster and engage prospects more effectively.\n\nContext:\n- Challenge: Traditional prospecting methods yielding low response rates\n- Objective: Use LinkedIn, social media, and digital tools for warmer outreach\n- Focus: Relationship building, thought leadership, and multi-channel engagement\n\nProvide:\n1. Social selling strategy and content calendar\n2. LinkedIn outreach sequences and messaging templates\n3. Digital prospecting tools and techniques\n4. Thought leadership and content sharing approach\n5. Social listening and trigger event identification\n\nDigital prospecting channels:\n- LinkedIn Sales Navigator and messaging\n- Industry forums and online communities\n- Social media engagement and commenting\n- Email marketing and nurture sequences\n- Webinars and virtual events\n- Content marketing and thought leadership\n\nCustomize for:\n- Target audience: [Job titles and industries]\n- Content themes: [Industry topics and pain points]\n- Platform focus: [LinkedIn/Twitter/Industry forums]\n- Engagement style: [Educational/Consultative/Relationship-focused]</pre>
+      <button class="copy" onclick="copyText('GePr1')">Copy Prompt</button>
+    </div>
+    <div class="prompt">
+      <div class="title">Referral Generation & Partner Leverage</div>
+      <div class="tags">Tags: general, referrals, partner-leverage, customer-advocacy, warm-introductions, ecosystem</div>
+      <div class="desc">Referral generation and partner leverage to accelerate pipeline growth</div>
+      <pre id="GePr2">Help me systematically generate referrals and leverage partner networks to accelerate pipeline growth and deal velocity.\n\nContext:\n- Challenge: Relying too heavily on cold outreach\n- Objective: Build a referral engine and partner ecosystem\n- Focus: Customer advocacy, partner relationships, and warm introductions\n\nProvide:\n1. Customer referral program and ask strategies\n2. Partner ecosystem mapping and collaboration\n3. Referral conversation scripts and timing\n4. Incentive structures and recognition programs\n5. Tracking and measurement framework\n\nReferral sources to activate:\n- Existing satisfied customers and advocates\n- Industry partners and complementary vendors\n- Professional networks and associations\n- Former colleagues and personal connections\n- Channel partners and resellers\n- Consultants and system integrators\n\nCustomize for:\n- Customer base: [Size and satisfaction level]\n- Partner ecosystem: [Types of partners available]\n- Industry networks: [Associations and groups]\n- Referral incentives: [What you can offer]</pre>
+      <button class="copy" onclick="copyText('GePr2')">Copy Prompt</button>
+    </div>
+    <div class="category">Objection Handling</div>
+    <div class="prompt">
+      <div class="title">Objection Handling & Competitive Differentiation</div>
+      <div class="tags">Tags: general, objection-handling, competitive, differentiation, deal-closure, value-selling</div>
+      <div class="desc">Objection handling and competitive differentiation to accelerate deal closure</div>
+      <pre id="GeOb0">Help me handle common objections and differentiate TELUS solutions from competitors to accelerate deal closure.\n\nContext:\n- Challenge: Recurring objections slowing down sales process\n- Objective: Turn objections into selling opportunities\n- Focus: Price, timing, competition, and feature concerns\n\nProvide:\n1. Framework for handling top 5 objections in my territory\n2. Competitive differentiation talking points\n3. Value-based responses to price objections\n4. Timing and urgency creation strategies\n5. Proof points and case studies to overcome skepticism\n\nCommon objection categories:\n- Price and budget constraints\n- Timing and implementation concerns\n- Competitive alternatives and incumbent solutions\n- Feature gaps and technical requirements\n- Risk and change management concerns\n- ROI and business case justification\n\nCustomize for:\n- Primary competitors: [List main competitors]\n- Common objections: [Specific objections you face]\n- Deal stage: [Early/Mid/Late stage objections]\n- Buyer type: [Technical/Business/Financial decision makers]</pre>
+      <button class="copy" onclick="copyText('GeOb0')">Copy Prompt</button>
+    </div>
+  </div>
+</body></html>
