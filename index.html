@@ -1,135 +1,108 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TELUS SalesIQ Prompt Library</title>
-  <link rel="icon" type="image/png" href="https://www.telus.com/etc/designs/tcom/telus/global/clientlib-site/resources/images/favicon.ico" />
+  <link rel="icon" href="https://www.telus.com/etc/designs/tcom/telus/global/clientlib-site/resources/images/favicon.ico" />
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #f9f9f9; }
+    header {
       background: linear-gradient(135deg, #4B0082, #66CC00);
-      margin: 0; padding: 0;
-    }
-    .header {
-      background: white;
-      padding: 20px;
+      padding: 16px 32px;
+      color: white;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      border-bottom: 2px solid #eee;
+      justify-content: space-between;
     }
-    .header img { height: 40px; }
-    .nav {
-      display: flex;
-      gap: 20px;
+    header img { height: 40px; }
+    .nav-tabs {
+      display: flex; gap: 24px; margin: 24px 0; justify-content: center;
     }
-    .nav button {
-      background: none;
-      border: none;
-      font-size: 16px;
-      cursor: pointer;
-      font-weight: bold;
+    .nav-tabs button {
+      background: none; border: none; font-size: 16px; font-weight: bold;
+      cursor: pointer; padding: 12px 20px; border-bottom: 3px solid transparent;
     }
-    .active { text-decoration: underline; color: #4B0082; }
-
-    .container { padding: 20px; max-width: 1000px; margin: auto; }
-
-    .category-title {
-      font-size: 20px;
-      margin-top: 40px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
-      color: #4B0082;
+    .nav-tabs button.active { border-color: #4B0082; color: #4B0082; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+    .category-header {
+      margin-top: 32px; font-size: 20px; border-left: 5px solid #4B0082;
+      padding-left: 10px; color: #333;
     }
-
     .prompt-card {
-      background: white;
-      margin: 20px 0;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      background: white; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px; margin: 20px 0;
     }
-    .tags span {
-      background: #eee;
-      border-radius: 4px;
-      padding: 3px 8px;
-      margin-right: 5px;
-      font-size: 12px;
+    .prompt-card h3 { margin-top: 0; font-size: 18px; }
+    .prompt-card .description { font-style: italic; margin-bottom: 8px; }
+    .prompt-card .tags span {
+      background: #eee; font-size: 12px; margin-right: 6px; padding: 4px 8px;
+      border-radius: 20px; color: #444;
+    }
+    .prompt-card pre {
+      white-space: pre-wrap; background: #f4f4f4; padding: 12px;
+      border-radius: 6px; font-size: 14px;
     }
     .copy-btn {
-      float: right;
-      padding: 5px 10px;
-      background: #4B0082;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      margin-top: 8px; background: #4B0082; color: white; border: none;
+      padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 14px;
     }
-    .suggest {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #ffffff;
-      border: 2px solid #4B0082;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-weight: bold;
-      color: #4B0082;
-      text-decoration: none;
+    .suggest-btn {
+      position: fixed; bottom: 20px; right: 20px; background: #ffffff;
+      border: 2px solid #4B0082; padding: 12px 20px; border-radius: 20px;
+      font-weight: bold; color: #4B0082; text-decoration: none; z-index: 1000;
     }
   </style>
 </head>
 <body>
 
-  <a class="suggest" href="https://forms.gle/AbCdEf123456789" target="_blank">Suggest a Prompt</a>
-
-  <div class="header">
+  <header>
     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/Telus_Logo.svg/2560px-Telus_Logo.svg.png" alt="TELUS Logo"/>
-    <div class="nav">
-      <button class="tab-btn active" onclick="switchTab('General')">General</button>
-      <button class="tab-btn" onclick="switchTab('Agriculture')">Agriculture</button>
-      <button class="tab-btn" onclick="switchTab('Consumer')">Consumer Goods</button>
-    </div>
+    <h2>SalesIQ Prompt Library</h2>
+  </header>
+
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('General')">General</button>
+    <button class="tab-btn" onclick="switchTab('Agriculture')">Agriculture</button>
+    <button class="tab-btn" onclick="switchTab('Consumer')">Consumer Goods</button>
   </div>
 
   <div class="container">
-
     <div id="General" class="tab-content">
-      <div class="category-title">Territory Planning</div>
+      <div class="category-header">Territory Planning</div>
       <div class="prompt-card">
-        <strong>Territory Funnel Analysis & Strategy</strong>
-        <button class="copy-btn" onclick="copyText(this)">Copy</button>
-        <p><em>Territory planning and funnel optimization strategies</em></p>
+        <h3>Territory Funnel Analysis & Strategy</h3>
+        <p class="description">Territory planning and funnel optimization strategies</p>
         <div class="tags"><span>territory-planning</span> <span>strategy</span></div>
-        <pre>My funnel is [Bloated/Anemic/Stagnant/Unqualified]... [truncated for demo]</pre>
+        <pre>My funnel is [Bloated/Anemic/Stagnant/Unqualified]...</pre>
+        <button class="copy-btn" onclick="copyText(this)">Copy Prompt</button>
       </div>
     </div>
 
     <div id="Agriculture" class="tab-content" style="display:none">
-      <div class="category-title">Prospecting</div>
+      <div class="category-header">Prospecting</div>
       <div class="prompt-card">
-        <strong>Agricultural Producer Outreach</strong>
-        <button class="copy-btn" onclick="copyText(this)">Copy</button>
-        <p><em>Comprehensive outreach for large-scale agricultural producers</em></p>
+        <h3>Agricultural Producer Outreach</h3>
+        <p class="description">Comprehensive outreach for large-scale agricultural producers</p>
         <div class="tags"><span>agriculture</span> <span>producers</span></div>
-        <pre>Act as an expert TELUS sales professional specializing in Agriculture... [truncated]</pre>
+        <pre>Act as an expert TELUS sales professional specializing in Agriculture...</pre>
+        <button class="copy-btn" onclick="copyText(this)">Copy Prompt</button>
       </div>
     </div>
 
     <div id="Consumer" class="tab-content" style="display:none">
-      <div class="category-title">Prospecting</div>
+      <div class="category-header">Prospecting</div>
       <div class="prompt-card">
-        <strong>CPG Manufacturer Outreach</strong>
-        <button class="copy-btn" onclick="copyText(this)">Copy</button>
-        <p><em>Cold outreach framework for CPG manufacturers</em></p>
+        <h3>CPG Manufacturer Outreach</h3>
+        <p class="description">Cold outreach framework for CPG manufacturers</p>
         <div class="tags"><span>cpg</span> <span>outreach</span></div>
-        <pre>Act as an expert TELUS sales professional specializing in Consumer Goods... [truncated]</pre>
+        <pre>Act as an expert TELUS sales professional specializing in Consumer Goods...</pre>
+        <button class="copy-btn" onclick="copyText(this)">Copy Prompt</button>
       </div>
     </div>
-
   </div>
+
+  <a class="suggest-btn" href="https://forms.gle/AbCdEf123456789" target="_blank">Suggest a Prompt</a>
 
   <script>
     function switchTab(tab) {
@@ -143,7 +116,7 @@
       const text = btn.parentElement.querySelector('pre').innerText;
       navigator.clipboard.writeText(text);
       btn.innerText = "Copied!";
-      setTimeout(() => btn.innerText = "Copy", 2000);
+      setTimeout(() => btn.innerText = "Copy Prompt", 1500);
     }
   </script>
 
