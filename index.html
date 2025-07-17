@@ -5,100 +5,93 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TELUS SalesIQ Prompt Library</title>
   <style>
-    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f9f9f9; margin: 0; padding: 20px; }
-    h1 { color: #4B0082; }
-    .tab { margin-top: 2rem; }
-    .category { font-weight: bold; font-size: 1.2rem; margin-top: 1.5rem; border-left: 4px solid #4B0082; padding-left: 10px; }
-    .prompt { background: #fff; padding: 1rem; border-radius: 8px; margin: 1rem 0; box-shadow: 0 0 6px rgba(0,0,0,0.1); }
-    .title { font-weight: bold; font-size: 1rem; margin-bottom: 0.5rem; }
-    .desc { font-style: italic; margin-bottom: 0.5rem; }
-    .tags { font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
-    pre { background: #f4f4f4; padding: 10px; border-radius: 6px; white-space: pre-wrap; }
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; background: #ffffff; }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 2px solid #4B0082; }
+    .logo { height: 50px; }
+    h1 { color: #4B0082; margin: 0; font-size: 1.5em; }
+    .tabs { display: flex; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
+    .tab { margin: 5px; padding: 10px 20px; background: #eee; border-radius: 20px; cursor: pointer; }
+    .tab.active { background: #4B0082; color: white; }
+    .content-section { display: none; }
+    .content-section.active { display: block; }
+    .category { font-size: 1.3em; font-weight: bold; margin-top: 30px; color: #4B0082; }
+    .prompt { background: #f9f9f9; padding: 15px; border-radius: 8px; margin: 10px 0; box-shadow: 0 0 6px rgba(0,0,0,0.1); }
+    .title { font-weight: bold; font-size: 1.1em; color: #333; }
+    .tags { font-size: 0.85em; color: #777; margin-bottom: 5px; }
+    .desc { font-style: italic; margin-bottom: 10px; color: #555; }
+    pre { white-space: pre-wrap; background: #fff; padding: 10px; border-radius: 6px; border: 1px solid #ddd; }
+    button.copy { margin-top: 10px; background: #4B0082; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+    .form-button { display: inline-block; background: #66CC00; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-weight: bold; }
+    .top-bar { display: flex; justify-content: space-between; align-items: center; }
   </style>
+  <script>
+    function showTab(tabName) {
+      document.querySelectorAll('.content-section').forEach(e => e.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(e => e.classList.remove('active'));
+      document.getElementById(tabName).classList.add('active');
+      document.getElementById('tab-' + tabName).classList.add('active');
+    }
+    function copyText(id) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Prompt copied to clipboard!');
+      });
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      showTab("General Sales");
+    });
+  </script>
 </head>
 <body>
-  <h1>TELUS SalesIQ Prompt Library</h1>
-
-  <div class="tab" id="Agriculture">
-    <h2>Agriculture</h2>
-
+<header>
+  <img src="TAC logo.png" alt="TELUS ACG Logo" class="logo">
+  <div class="top-bar">
+    <h1>TELUS SalesIQ Prompt Library</h1>
+  </div>
+  <a href="https://forms.gle/exampleTELUSform" class="form-button" target="_blank">Suggest a Prompt</a>
+</header>
+<div class="tabs">
+  <div class="tab" id="tab-General Sales" onclick="showTab('General Sales')">General Sales</div>
+  <div class="tab" id="tab-Agriculture" onclick="showTab('Agriculture')">Agriculture</div>
+  <div class="tab" id="tab-Consumer Goods" onclick="showTab('Consumer Goods')">Consumer Goods</div>
+</div>
+  <div class="content-section" id="General Sales">
+    <div class="category">Forecasting</div>
+    <div class="prompt">
+      <div class="title">Forecast Justification</div>
+      <div class="tags">Tags: forecasting, pipeline</div>
+      <div class="desc">Justify why an opportunity is forecasted to close this quarter.</div>
+      <pre id="GeFo0">Help me write a short note justifying why an opportunity is still forecasted to close this quarter...</pre>
+      <button class="copy" onclick="copyText('GeFo0')">Copy Prompt</button>
+    </div>
+    <div class="category">Objection Handling</div>
+    <div class="prompt">
+      <div class="title">Pricing Objection Handling</div>
+      <div class="tags">Tags: objections, pricing</div>
+      <div class="desc">Strategies for managing pricing objections.</div>
+      <pre id="GeOb0">List ways to address objections around pricing, timing, or switching from a competitor...</pre>
+      <button class="copy" onclick="copyText('GeOb0')">Copy Prompt</button>
+    </div>
+  </div>
+  <div class="content-section" id="Agriculture">
     <div class="category">Prospecting</div>
     <div class="prompt">
-      <div class="title">Agricultural Producer Outreach</div>
-      <div class="desc">Comprehensive outreach framework for large-scale agricultural producers and agribusiness operations</div>
-      <div class="tags">Tags: agriculture, producers, outreach</div>
-      <pre>Act as an expert TELUS sales professional specializing in Agriculture technology solutions. Help me with outreach to large-scale agricultural producers and agribusiness operations.
-
-Context:
-- Business Unit: TELUS Agriculture
-- Target: Large-scale crop/livestock producers, agribusiness conglomerates, agricultural cooperatives
-- Focus: Data-driven insights, precision agriculture, supply chain optimization
-
-Provide:
-1. Outreach framework for agricultural producers
-2. Key pain points in modern farming operations
-3. Questions about current farming challenges
-4. Value proposition for agricultural operations
-5. Success metrics for producer engagement
-
-Focus areas:
-- Precision agriculture and data analytics
-- Supply chain traceability
-- Sustainability and regulatory compliance
-- Yield optimization and cost reduction</pre>
+      <div class="title">Outreach to Agribusiness</div>
+      <div class="tags">Tags: agriculture, outreach</div>
+      <div class="desc">Framework to reach large-scale ag producers.</div>
+      <pre id="AgPr0">Generate a message to large-scale ag producers focused on yield optimization and traceability...</pre>
+      <button class="copy" onclick="copyText('AgPr0')">Copy Prompt</button>
     </div>
   </div>
-
-  <div class="tab" id="Consumer Goods">
-    <h2>Consumer Goods</h2>
-
+  <div class="content-section" id="Consumer Goods">
     <div class="category">Channel Partners</div>
     <div class="prompt">
-      <div class="title">Sales Agency Partnerships</div>
-      <div class="desc">Partnership development strategies for sales agencies and brokers in CPG space</div>
-      <div class="tags">Tags: cpg, agencies, partnerships</div>
-      <pre>Act as an expert TELUS sales professional specializing in Consumer Goods technology solutions. Help me develop partnerships with sales agencies and brokers who represent CPG manufacturers.
-
-Context:
-- Business Unit: TELUS Consumer Goods
-- Target: Sales Agencies and Brokers representing CPG manufacturers
-- Objective: Partner with agencies to reach their manufacturer clients
-
-Provide:
-1. Agency partnership strategies
-2. Value propositions for agency relationships
-3. Questions about their manufacturer client base
-4. Joint sales approaches and co-selling
-5. Success metrics for agency partnerships</pre>
+      <div class="title">Broker Collaboration</div>
+      <div class="tags">Tags: consumer goods, brokers</div>
+      <div class="desc">Partnering with brokers and agencies in CPG.</div>
+      <pre id="CoCh0">Suggest 5 ways we can co-sell with CPG brokers who represent major food brands...</pre>
+      <button class="copy" onclick="copyText('CoCh0')">Copy Prompt</button>
     </div>
   </div>
-
-  <div class="tab" id="General">
-    <h2>General</h2>
-
-    <div class="category">Meeting Prep</div>
-    <div class="prompt">
-      <div class="title">Client Meeting Preparation</div>
-      <div class="desc">Comprehensive meeting preparation framework for client interactions and sales meetings</div>
-      <div class="tags">Tags: general, meeting-prep, preparation</div>
-      <pre>Help me prepare for a TELUS meeting with [Company] on [Date].
-
-Meeting type: [Discovery/Demo/Proposal/Negotiation/Check-in]
-
-Provide:
-1. Pre-meeting research checklist
-2. Key questions to ask based on meeting type
-3. Talking points and value propositions
-4. Potential objections and responses
-5. Follow-up action planning
-
-Research areas to cover:
-- Recent company news and developments
-- Industry trends affecting their business
-- Key stakeholders and their priorities
-- Previous TELUS interactions and relationship history</pre>
-    </div>
-  </div>
-
 </body>
 </html>
